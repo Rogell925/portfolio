@@ -1,43 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<title>
+    RogellFolio
+</title>
+<head>
+    <script src="Portfolio.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #7f7f7f;
+            color: #666;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 1600px;
+            width: 100%;
+            margin: 100 auto;
+        }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .profile-section {
+            flex: 1;
+            text-align: left;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .profile-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-section p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .skills {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .skill {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 20px;
+            border-radius: 10px;
+            text-align: right;
+            padding-right: 5px;
+            color: #fff;
+            line-height: 20px;
+            font-size: 0.9rem;
+        }
+
+        .html { background-color: #40393b; width: 90%; }
+        .css { background-color: #000000; width: 80%; }
+        .js { background-color: #fc823c; width: 70%; }
+        .backend { background-color: #4BC0C0; width: 50%; }
+
+        @media (min-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .profile {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .profile-section {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            body {
+                padding: 40px;
+            }
+
+            .container {
+                padding: 3rem;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .profile-section h2 {
+                font-size: 2rem;
+            }
+
+            .profile-section p {
+                font-size: 1.2rem;
+            }
+
+            .profile img {
+                max-width: 500px;
+            }
+
+            h3 {
+                color: rgba(0, 0, 0, 0.9);
+            }
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        footer a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Portfolio Website</h1>
+        <div class="profile">
+            <div class="profile-section">
+                <h2>IT Student</h2>
+                <p>Hi, my name is <strong>Rogell Yevgeny Sulivan</strong>, an IT student at Western Institute of Technology. I’m 20 years old and from Guimbal, Iloilo.</p>
+            </div>
+            <div>
+                <img src="image9.png" alt="Rogell Yevgeny Sulivan">
+            </div>
+            <div class="profile-section">
+                <h2>Front-End Designer</h2>
+                <p>I focus on front-end development because I enjoy working on it the most. While I have some knowledge of back-end technologies, my expertise lies in the front-end.</p>
+            </div>
+        </div>
+
+        
+        <BR>
+            <BR>
+                <BR>
+                    <BR>
+                        <BR>
+                            <BR>
+                                <BR>
+                                    <BR>
+                                        <BR>
+                                            <BR>
+
+
+        <h1>MY SKILLS</h1>
+        <div class="skills">
+            <div class="skill">
+                <div class="skill-name">HTML</div>
+                <div class="skill-bar">
+                    <div class="skill-level html">90%</div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">JAVA</div>
+                <div class="skill-bar">
+                    <div class="skill-level css">80%</div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">PYTHON</div>
+                <div class="skill-bar">
+                    <div class="skill-level js">70%</div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-name">JAVASCRIPT</div>
+                <div class="skill-bar">
+                    <div class="skill-level backend">50%</div>
+                </div>
+            </div>
+        </div>
+
+            <BR>
+                <BR>
+                    <BR>
+                        <BR>
+                            <BR>
+                                <BR>
+                                    <BR>
+                                        <BR>
+                                            <BR>
+                                                <BR>
+
+        <h1>PROJECTS</h1>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="project1.png" alt="Project 1">
+                <h3>Responsive Web Design</h3>
+                <p>A modern and fully responsive website built using HTML, CSS, and JavaScript to ensure optimal viewing experience across all devices.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="project2.png" alt="Project 2">
+                <h3>E-commerce Website</h3>
+                <p>An e-commerce platform designed with user-friendly navigation, featuring a clean interface and integrated shopping cart functionality.</p>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="project3.png" alt="Project 3">
+                <h3>Personal Blog</h3>
+                <p>A minimalist blog design implemented using front-end technologies, allowing for easy content updates and excellent readability.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Contact Me
+        <p>Email: <a href="mailto:rogell.sulivan@example.com">sulivanyevgeny@gmail.com</a></p>
+        <p>Phone: "Number"</p>
+        <p>Address: Guimbal, Iloilo</p>
+    </footer>
+</body>
 </html>
